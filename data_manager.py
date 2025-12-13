@@ -26,7 +26,9 @@ class DataManager:
             )
             if self.data.empty:
                 raise ValueError(f"No data returned for ticker {self.ticker}.")
-            print("Data fetched successfully.")
+            else:
+                print(f"Data fetched successfully.")
+                print(self.data)
             
         except Exception as e:
             print(f"Error fetching data: {e}")
@@ -35,7 +37,7 @@ class DataManager:
         return self.data
 
     def preprocess_data(self):
-        """Performs data cleaning and calculates initial features."""
+        #Performs data cleaning and calculates initial features.
         if self.data is None:
             print("Data is not loaded. Please run fetch_data first.")
             return None
@@ -43,13 +45,12 @@ class DataManager:
         # 1. Data Cleaning
         # Drop any rows with missing values (part of data cleaning)
         initial_rows = len(self.data)
-        self.data.dropna(inplace=True)
+        self.data.dropna(inplace=True)      #will remove the null values from data
         print(f"Cleaned data: Dropped {initial_rows - len(self.data)} rows with NaN values.")
 
         # 2. Calculate Initial Features (Daily Returns and Volatility)
         # Calculate daily returns (a core requirement for initial features)
-        self.data['Daily_Return'] = self.data['Close'].pct_change()
-
+        self.data['Daily_Return'] = self.data['Close'].pct_change()     #pandas function to calculate the percentage difference by a formula 
         # Calculate volatility (initial features for model input)
         # Using a 20-day rolling standard deviation of returns
         self.data['Volatility_20d'] = self.data['Daily_Return'].rolling(window=20).std()
@@ -61,8 +62,8 @@ class DataManager:
 
 # --- Example Usage (for testing) ---
 if __name__ == "__main__":
-    # Define your parameters for a common stock (e.g., Apple)
-    TICKER = 'AAPL'
+    # Define your parameters for a common stock (e.g., Apple,tesla,microsoft)
+    TICKER = 'TSLA'
     START_DATE = '2020-01-01'
     END_DATE = '2024-01-01' # Note: End date is exclusive in yfinance
 
