@@ -3,10 +3,6 @@ from sklearn.model_selection import train_test_split
 
 
 class AITradingStrategy:
-    """
-    AI-Based Trading Strategy using Linear Regression
-    (No error metrics used)
-    """
 
     def __init__(self):
         self.model = LinearRegression()
