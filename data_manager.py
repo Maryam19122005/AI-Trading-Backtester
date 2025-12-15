@@ -67,7 +67,7 @@ if __name__ == "__main__":
     START_DATE = '2020-01-01'
     END_DATE = '2024-01-01' # Note: End date is exclusive in yfinance
 
-    # Create an instance of the DataManager
+    # Creating an instance of the DataManager
     data_manager = DataManager(TICKER, START_DATE, END_DATE)
 
     # Execute the steps
@@ -80,5 +80,4 @@ if __name__ == "__main__":
             print(processed_data.head())
             print(f"\nTotal rows after preprocessing: {len(processed_data)}")
             
-            # This 'processed_data' will be the input for your Trading Strategy Class (Step 2)
-
+            
