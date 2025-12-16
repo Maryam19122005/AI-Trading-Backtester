@@ -12,7 +12,7 @@ def main():
     # -------------------------------
     TICKER = "TSLA"
     START_DATE = "2020-01-01"
-    END_DATE = "2024-01-01"
+    END_DATE = "2025-01-01"
     INITIAL_CAPITAL = 100000
 
     # -------------------------------
@@ -89,9 +89,6 @@ def plot_equity_curve(portfolio_data):
     plt.show()
 
 
-# -------------------------------
-# Entry Point
-# -------------------------------
 if __name__ == "__main__":
     main()
 
