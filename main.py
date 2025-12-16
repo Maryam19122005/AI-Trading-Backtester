@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-
+from datetime import datetime
 
 from data_manager import DataManager
 from strategy import AITradingStrategy
@@ -12,7 +12,7 @@ def main():
     # -------------------------------
     TICKER = "TSLA"
     START_DATE = "2020-01-01"
-    END_DATE = "2024-01-01"
+    END_DATE = datetime.today().strftime('%Y-%m-%d')
     INITIAL_CAPITAL = 100000
 
     # -------------------------------
