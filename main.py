@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-# Import your project classes
+
 from data_manager import DataManager
 from strategy import AITradingStrategy
 from backtester import Backtester
