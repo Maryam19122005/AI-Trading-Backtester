@@ -7,7 +7,7 @@ class AITradingStrategy:
     def __init__(self):
         self.model = LinearRegression()
 
-    def generate_signals(self, data):
+    def generate_signals(self, data, skip_last_day_signal=True):
         try:
             # -------------------------------
             # 1. Feature Creation
@@ -21,6 +21,7 @@ class AITradingStrategy:
             # -------------------------------
             # 2. Train-Test Split
             # -------------------------------
+
             X_train, X_test, y_train, y_test = train_test_split(
                 X, y, test_size=0.2, shuffle=False
             )
@@ -43,9 +44,16 @@ class AITradingStrategy:
             data.loc[data['Predicted_Close'] > data['Close'], 'Signal'] = 1   # BUY
             data.loc[data['Predicted_Close'] < data['Close'], 'Signal'] = -1  # SELL
 
+            # -------------------------------
+            # 6. Skip last day signal if needed
+            # -------------------------------
+            if skip_last_day_signal:
+                data.iloc[-1, data.columns.get_loc('Signal')] = 0
+
             print("AI trading signals generated.")
             return data
 
         except Exception as e:
             print("AI Strategy Error:", e)
             return None
+

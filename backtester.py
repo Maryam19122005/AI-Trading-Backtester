@@ -27,7 +27,7 @@ class Backtester:
         # 2. Iterative Trading Loop
         for i, row in df.iterrows():
             current_date = i.date()
-            signal = row['Signal']
+            signal = row.get('User_Confirmed_Signal', 0)
             price = row['Close']
             
             # Calculate the current value of the holdings before any trade
@@ -66,7 +66,6 @@ class Backtester:
             self.portfolio_value.append(total_value)
             
         print("--- Backtest Simulation Complete ---")
-        self.final_metrics = self.calculate_metrics(df)
         return df
 
     def calculate_metrics(self, portfolio_data):
