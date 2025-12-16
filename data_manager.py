@@ -24,6 +24,8 @@ class DataManager:
                 end=self.end_date, 
                 progress=False
             )
+            if isinstance(self.data.columns, pd.MultiIndex):
+                self.data.columns = self.data.columns.get_level_values(0)
             if self.data.empty:
                 raise ValueError(f"No data returned for ticker {self.ticker}.")
             else:
