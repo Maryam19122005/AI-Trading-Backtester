@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-# Import your project classes
+
 from data_manager import DataManager
 from strategy import AITradingStrategy
 from backtester import Backtester
@@ -89,9 +89,6 @@ def plot_equity_curve(portfolio_data):
     plt.show()
 
 
-# -------------------------------
-# Entry Point
-# -------------------------------
 if __name__ == "__main__":
     main()
 
